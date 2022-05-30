@@ -2,3 +2,10 @@
 body{
   color:rgb(88, 152, 152);
 }
+
+p {
+ text-align: justify;
+ text-indent: 10px;
+ text-align-last: auto;
+ initial-letter-align: 10px;
+}
