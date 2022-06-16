@@ -30,11 +30,6 @@ let pokemonList = (function () {
 
   let fullName = getFullname(Character);
 
-  console.log(fullName);
 
-  pokemonList.forEach(item => {
-    console.log(item.name)
-  });
 
-});
 
