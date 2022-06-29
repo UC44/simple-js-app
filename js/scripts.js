@@ -41,17 +41,13 @@ pokemonRepository.getAll().forEach(function (pokemon) {
   pokemonRepository.addlistItem(pokemon);
 });
 
-let newPokemon = { name: 'Irvin', height: '29.87', types: ['air', 'water'] };
-pokemonRepository.add(newPokemon);
-console.log(pokemonRepository.getAll()); // returns all pokemonList with the newly pushed pokemon
+// function showDetails(pokemon) {
+//   pokemonRepository.loadDetails(pokemon).then(function () {
+//     showModal(pokemon);
+//   });
 
-function showDetails(pokemon) {
-  pokemonRepository.loadDetails(pokemon).then(function () {
-    showModal(pokemon);
-  });
-
-  }
-// let container = document.querySelector('.container');
+//   }
+// // let container = document.querySelector('.container');
 // let button = document.createElement('button');
 // button.innerText = "Click Me";
 // container.appendChild(button);
