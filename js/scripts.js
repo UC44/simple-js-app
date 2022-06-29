@@ -22,6 +22,9 @@ let pokemonRepository = (function () {
     button.classList.add("button-class");
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
+    button.addEventListener('click', function (event) {
+      showDetails(pokemon);
+    })
   }
 
   function showDetails(pokemon) {
@@ -34,17 +37,14 @@ let pokemonRepository = (function () {
   }
 })();
 
-function writePokemon(pokemon) {
-  document.write(pokemon.name + '' + pokemon.height + ' ' + pokemon.types[0] + ' ' + pokemon.types[1] + '<br>');
-}
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addlistItem(pokemon);
+});
 
 let newPokemon = { name: 'Irvin', height: '29.87', types: ['air', 'water'] };
 pokemonRepository.add(newPokemon);
 console.log(pokemonRepository.getAll()); // returns all pokemonList with the newly pushed pokemon
 
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addlistItem(pokemon);
-});
 function showDetails(pokemon) {
   pokemonRepository.loadDetails(pokemon).then(function () {
     showModal(pokemon);
