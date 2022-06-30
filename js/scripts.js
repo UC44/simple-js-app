@@ -1,10 +1,5 @@
 let pokemonRepository = (function () {
-  let pokemonList = [
-    { name: 'Bulbasaur', height: '17.07', types: ['grass', 'fire'] },
-    { name: 'Metapod', height: '0.7', types: ['bug', 'water'] },
-    { name: 'Beedrill', height: '1.0', types: ['bug', 'poison'] },
-    { name: 'Nidoran', height: '0.4', types: ['Poison', 'Ground'] },
-  ];
+  let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'
 
   function add(pokemon) {
@@ -69,7 +64,10 @@ function addlistItem(pokemon) {
   }
 
   function showDetails(pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+      // showModal(pokemon);
+    });
   }
   return {
     add: add,
@@ -81,13 +79,6 @@ function addlistItem(pokemon) {
   };
 })();
 
-function showDetails(pokemon) {
-  loadDetails(pokemon).then(function () {
-    // console.log(pokemon);
-    showModal(pokemon);
-  });
-}
-
 pokemonRepository.loadList().then(function () {
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addlistItem(pokemon);
@@ -95,6 +86,16 @@ pokemonRepository.loadList().then(function () {
 });
 
 // Display
+
+
+// { name: 'Bulbasaur', height: '17.07', types: ['grass', 'fire'] },
+// { name: 'Metapod', height: '0.7', types: ['bug', 'water'] },
+// { name: 'Beedrill', height: '1.0', types: ['bug', 'poison'] },
+// { name: 'Nidoran', height: '0.4', types: ['Poison', 'Ground'] },
+
+// function showDetails(pokemon) {
+//   console.log(pokemon);
+// }
 
 // fetch('https://pokeapi.co/api/v2/pokemon/').then(function(response){
 //   return response.json();
