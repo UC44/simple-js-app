@@ -24,8 +24,7 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
-  
-  function addlistItem(pokemon) {
+function addlistItem(pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
     let listpokemon = document.createElement("li");
     let button = document.createElement("button");
@@ -82,17 +81,20 @@ let pokemonRepository = (function () {
   };
 })();
 
-pokemonRepository.loadList().then(function(){
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addlistItem(pokemon);
- });
-});
 function showDetails(pokemon) {
   loadDetails(pokemon).then(function () {
     // console.log(pokemon);
     showModal(pokemon);
   });
 }
+
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addlistItem(pokemon);
+  });
+});
+
+// Display
 
 // fetch('https://pokeapi.co/api/v2/pokemon/').then(function(response){
 //   return response.json();
