@@ -65,17 +65,63 @@ function addlistItem(pokemon) {
 
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
-      console.log(pokemon);
-      // showModal(pokemon);
+      // console.log(pokemon);
+      showModal(pokemon);
     });
   }
+ 
+
+Modal
+
+function showModal(pokemon){
+  modalContainer.innerHTML = '';
+  let modal = document.createElement('div');
+  modal.classList.add('modal');
+
+let closeButtonElement = document.createElement('button'); 
+  closeButtonElement.classList.add('modal-close');
+  closeButtonElement.innerText = 'Close';
+  closeButtonElement.addEventListener('click', hideModal);
+
+  let titleElement = document.createElement('h1');
+  titleElement.innerText = pokemon.name;
+
+  let contentElement = document.createElement('p');
+  contentElement.innerText = "Height:" +pokemon.height;
+
+  modal.appendChild(closeButtonElement);
+  modal.appendChild(titleElement);
+  modal.appendChild(contentElement);
+  modalContainer.appendChild(modal);
+
+  modalContainer.classList.add('is-visible');
+}
+
+function hideModal() {
+  modalContainer.classList.remove('is-visible');
+
+ }
+
+window.addEventListener('keydown', (e) => {
+ if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')){
+    hideModal();
+  }
+});
+
+modalContainer.addEventListener('click', (e) => {
+  let target = e.target;
+  if (target === modalContainer) {
+    hideModal();
+  }
+});
+
   return {
     add: add,
     getAll: getAll,
     addlistItem: addlistItem,
-    loadList:loadList,
-    loadDetails:loadDetails,
-    showDetails:showDetails
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showDetails: showDetails
   };
 })();
 
@@ -84,10 +130,7 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.addlistItem(pokemon);
   });
 });
-
-// Display
-
-
+  
 // { name: 'Bulbasaur', height: '17.07', types: ['grass', 'fire'] },
 // { name: 'Metapod', height: '0.7', types: ['bug', 'water'] },
 // { name: 'Beedrill', height: '1.0', types: ['bug', 'poison'] },
