@@ -1,6 +1,7 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  let modalContainer = document.querySelector('#modal-container');
 
   function add(pokemon) {
     if (
@@ -64,14 +65,14 @@ function addlistItem(pokemon) {
   }
 
   function showDetails(pokemon) {
-    loadDetails(pokemon).then(function () {
+    pokemonRepository.loadDetails(pokemon).then(function () {
       // console.log(pokemon);
       showModal(pokemon);
     });
   }
  
 
-Modal
+// Modal
 
 function showModal(pokemon){
   modalContainer.innerHTML = '';
