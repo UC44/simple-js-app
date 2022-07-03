@@ -88,10 +88,27 @@ let closeButtonElement = document.createElement('button');
   titleElement.innerText = pokemon.name;
 
   let contentElement = document.createElement('p');
-  contentElement.innerText = "Height:" +pokemon.height;
+  contentElement.innerText = "Height: "+pokemon.height + "<br>";
+
+  let types = [];
+  pokemon.types.forEach(function(typeobj){
+    types.push(" "+typeobj.type.name);
+  });
+
+  if (types.length<2){
+    contentElement.innerHTML += "Type:";
+  } else{
+    contentElement.innerHTML += "Types:";
+  }
+   contentElement.innerHTML += types.toString();
+
+   let imageElement = document.createElement('image');
+   imageElement.classList.add('pokemon-image');
+   imageElement.src =pokemon.imageUrl;
 
   modal.appendChild(closeButtonElement);
   modal.appendChild(titleElement);
+  modal.appendChild(imageElement);
   modal.appendChild(contentElement);
   modalContainer.appendChild(modal);
 
