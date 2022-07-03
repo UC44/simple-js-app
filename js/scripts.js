@@ -102,7 +102,7 @@ let closeButtonElement = document.createElement('button');
   }
    contentElement.innerHTML += types.toString();
 
-   let imageElement = document.createElement('image');
+   let imageElement = document.createElement('img');
    imageElement.classList.add('pokemon-image');
    imageElement.src =pokemon.imageUrl;
 
