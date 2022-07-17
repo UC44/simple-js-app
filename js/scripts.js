@@ -26,11 +26,14 @@ function addlistItem(pokemon) {
     pokemonList.classList.add("group-list-item");
     pokemonList.classList.add("col-sm-4", "col-md-6", "col-lg-12");
     let button = document.createElement("button");
+    buttonItem.classList.add("pokemonButton");
     button.innerText = pokemon.name;
-    button.classList.add("button-class");
-    listpokemon.appendChild(button);
-    pokemonList.appendChild(listpokemon);
-    button.addEventListener('click', function (event) {
+    buttonItem.setAttribute("data-toggle", "modal");
+    buttonItem.setAttribute("data-target", "#pokemon-modal");
+    $(buttonItem).addClass('button-class btn-block btn m1');
+    pokemonItem.appendChild(buttonItem);  // calling the listpokemon to the button
+    pokemonList.appendChild(pokemonItem);  // calling the pokemonList to the list
+    buttonItem.addEventListener("click", function (event) {
       showDetails(pokemon);
     })
   }
