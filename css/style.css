@@ -1,4 +1,4 @@
-/*Needed to write something for Github to accept the upload*/
+/* Needed to write something for Github to accept the upload
 /* body {
   color: rgb(88, 152, 152);
 }
@@ -117,4 +117,5 @@ body {
 
 #modal-container.is-visible {
   display: block;
-}
+} 
+
