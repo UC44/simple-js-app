@@ -53,7 +53,7 @@ body {
   z-index: 999;
   overflow: auto;
   display: grid;
-  text-align: center
+  text-align: center;
 }
 
 .modal {
